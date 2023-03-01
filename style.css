@@ -31,6 +31,13 @@ main {
   text-align: center;
 }
 
+.guess--test {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: large;
+}
+
 .h--guess {
   margin-bottom: 12px;
 }

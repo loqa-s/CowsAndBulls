@@ -2,6 +2,15 @@ const btnGuess = document.querySelector(`.btn--guess`);
 const input = document.querySelector(`.input--guess`);
 const message = document.querySelector(`.h--guess`).textContent;
 
+const testingDiv = document.getElementById(`guess-test`);
+const addNew = function (text) {
+  const newDiv = document.createElement(`div`);
+  const newText = document.createTextNode(text);
+  //newDiv.ad
+  testingDiv.appendChild(newDiv);
+  newDiv.appendChild(newText);
+};
+
 const compareValues = function (a, b) {
   // функция сравнивает значения в массиве
   return a.toString() === b.toString();
@@ -45,6 +54,7 @@ btnGuess.addEventListener(`click`, function () {
   console.log(secretNumber);
 
   if (inputValue.length === 4 && !hasDuplicates(inputValue)) {
+    addNew(inputRawValue);
     if (compareValues(secretNumber, inputValue)) {
       // TODO: тут расписать победу
       console.log(`ПОБЕДА`);
