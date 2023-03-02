@@ -11,7 +11,7 @@ html {
 
 body {
   font-family: "PT Sans Caption", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   height: 100vh;
   background-color: #db9a9a28;
   color: #333;
@@ -32,15 +32,17 @@ main {
 }
 
 .result {
+  overflow: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   text-align: center;
-  font-size: large;
-  margin-bottom: 10px;
+  font-size: 30px;
+  margin-bottom: 24px;
+  height: 500px;
 }
 
 .h--guess {
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   font-size: xx-large;
 }
 
@@ -60,4 +62,8 @@ main {
 
   text-align: center;
   cursor: pointer;
+}
+
+.cow {
+  display: none;
 }

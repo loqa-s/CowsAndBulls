@@ -1,6 +1,6 @@
 const btnGuess = document.querySelector(`.btn--guess`);
 const input = document.querySelector(`.input--guess`);
-const testingDiv = document.getElementById(`result--main`);
+const addingDiv = document.getElementById(`result--main`);
 
 const message = function (text) {
   document.querySelector(`.h--guess`).textContent = text;
@@ -10,7 +10,7 @@ const addNew = function (text) {
   // добавление див элемента с текстом
   const newDiv = document.createElement(`div`);
   const newText = document.createTextNode(text);
-  testingDiv.appendChild(newDiv);
+  addingDiv.appendChild(newDiv);
   newDiv.appendChild(newText);
 };
 
@@ -28,7 +28,7 @@ const generateArray = function (array) {
   //функция генерируерт рандомные 4 числа и пушит их в массив
   let generateValue;
   for (i = 0; i < 4; i++) {
-    generateValue = Math.trunc(Math.random() * 8) + 1;
+    generateValue = Math.trunc(Math.random() * 9) + 1;
     array.push(generateValue);
   }
 };
@@ -87,8 +87,8 @@ btnGuess.addEventListener(`click`, function () {
       }
     }
   }
-  addNew(`${inputRawValue} --- ${bull} быка и ${cow} коровы`);
-  console.log(`${bull} быка и ${cow} коровы`);
+  addNew(`${inputRawValue} --- ${bull} 🐂 и ${cow} 🐄`);
+  console.log(`${bull} 🐂 и ${cow} 🐄`);
 });
 
 // БАГ: Никогда не бывает 0-я
