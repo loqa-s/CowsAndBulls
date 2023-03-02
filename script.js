@@ -87,8 +87,8 @@ btnGuess.addEventListener(`click`, function () {
       }
     }
   }
-  addNew(`${inputRawValue} --- ${bull} 🐂 и ${cow} 🐄`);
-  console.log(`${bull} 🐂 и ${cow} 🐄`);
+  addNew(`${inputRawValue}  —  ${bull} 🐂 ${cow} 🐄`);
+  console.log(`${bull} 🐂 ${cow} 🐄`);
 });
 
 // БАГ: Никогда не бывает 0-я
