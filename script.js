@@ -52,38 +52,43 @@ btnGuess.addEventListener(`click`, function () {
   const inputStringValue = inputRawValue.split("");
   const inputValue = inputStringValue.map(Number);
 
-  //думаю, как указывать в результате кол-во коров и быков
-  const textAnswerBull = `${inputRawValue} + `;
-  const textAnswerCow = `${inputRawValue} + `;
-
   console.log(typeof inputRawValue);
   console.log(inputValue);
   console.log(secretNumber);
 
-  if (inputValue.length === 4 && !hasDuplicates(inputValue)) {
-    addNew(inputRawValue);
-    if (compareValues(secretNumber, inputValue)) {
-      // TODO: тут расписать победу
-      message(`ПОБЕДА`);
-    } else {
-      for (let i = 0; i < secretNumber.length; i++) {
-        for (let j = 0; j < inputValue.length; j++) {
-          if (secretNumber[i] === inputValue[j]) {
-            if (secretNumber[i] === inputValue[i]) {
-              console.log(`БЫК`);
-            } else {
-              console.log(`КОРОВА`);
-            }
-          }
+  if (inputValue.length !== 4) {
+    //Проверяем, что введеное число состоит из 4х знаков
+    return message(`Нужно ввести 4 цифры`);
+  }
+
+  if (hasDuplicates(inputValue)) {
+    //Проверяем, что в введенном чилсле нет дублей
+    return message(`Нельзя использовать повторяющиеся значения`);
+  }
+
+  if (compareValues(secretNumber, inputValue)) {
+    //Проверяем, является ли введеное число победным
+    //TODO: Доделать условия победы
+    addNew(`${secretNumber} --- загаданное число!`);
+    return message(`ПОБЕДА`);
+  }
+
+  let cow = 0;
+  let bull = 0;
+
+  for (let i = 0; i < secretNumber.length; i++) {
+    for (let j = 0; j < inputValue.length; j++) {
+      if (secretNumber[i] === inputValue[j]) {
+        if (secretNumber[i] === inputValue[i]) {
+          bull++;
+        } else {
+          cow++;
         }
       }
     }
-  } else {
-    // TODO: тут ошибка, что условие в 4 цифры не выполнено ИЛИ есть ошибка в дубликатах
-    hasDuplicates(inputValue)
-      ? message(`Нельзя использовать повторяющиеся значения`)
-      : message(`Нужно ввести 4 цифры`);
   }
+  addNew(`${inputRawValue} --- ${bull} быка и ${cow} коровы`);
+  console.log(`${bull} быка и ${cow} коровы`);
 });
 
 // БАГ: Никогда не бывает 0-я
