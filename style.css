@@ -31,20 +31,33 @@ main {
   text-align: center;
 }
 
-.guess--test {
+.result {
   display: flex;
   flex-direction: column;
   text-align: center;
   font-size: large;
+  margin-bottom: 10px;
 }
 
 .h--guess {
   margin-bottom: 12px;
+  font-size: xx-large;
 }
 
 .input--guess {
+  /* border: #333; */
+  height: 50px;
+  border-radius: 10px;
+  font-size: large;
+  text-align: center;
 }
 
 .btn--guess {
   margin-top: 12px;
+  border-radius: 5px;
+  font-size: 25px;
+  padding: 5px 12px;
+
+  text-align: center;
+  cursor: pointer;
 }

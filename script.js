@@ -1,12 +1,15 @@
 const btnGuess = document.querySelector(`.btn--guess`);
 const input = document.querySelector(`.input--guess`);
-const message = document.querySelector(`.h--guess`).textContent;
+const testingDiv = document.getElementById(`result--main`);
 
-const testingDiv = document.getElementById(`guess-test`);
+const message = function (text) {
+  document.querySelector(`.h--guess`).textContent = text;
+};
+
 const addNew = function (text) {
+  // добавление див элемента с текстом
   const newDiv = document.createElement(`div`);
   const newText = document.createTextNode(text);
-  //newDiv.ad
   testingDiv.appendChild(newDiv);
   newDiv.appendChild(newText);
 };
@@ -49,6 +52,10 @@ btnGuess.addEventListener(`click`, function () {
   const inputStringValue = inputRawValue.split("");
   const inputValue = inputStringValue.map(Number);
 
+  //думаю, как указывать в результате кол-во коров и быков
+  const textAnswerBull = `${inputRawValue} + `;
+  const textAnswerCow = `${inputRawValue} + `;
+
   console.log(typeof inputRawValue);
   console.log(inputValue);
   console.log(secretNumber);
@@ -57,7 +64,7 @@ btnGuess.addEventListener(`click`, function () {
     addNew(inputRawValue);
     if (compareValues(secretNumber, inputValue)) {
       // TODO: тут расписать победу
-      console.log(`ПОБЕДА`);
+      message(`ПОБЕДА`);
     } else {
       for (let i = 0; i < secretNumber.length; i++) {
         for (let j = 0; j < inputValue.length; j++) {
@@ -74,8 +81,8 @@ btnGuess.addEventListener(`click`, function () {
   } else {
     // TODO: тут ошибка, что условие в 4 цифры не выполнено ИЛИ есть ошибка в дубликатах
     hasDuplicates(inputValue)
-      ? console.log(`Нельзя использовать повторяющиеся значения`)
-      : console.log(`Нужно ввести 4 цифры`);
+      ? message(`Нельзя использовать повторяющиеся значения`)
+      : message(`Нужно ввести 4 цифры`);
   }
 });
 
