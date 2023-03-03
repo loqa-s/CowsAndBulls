@@ -1,6 +1,34 @@
+`use strict`;
+
 const btnGuess = document.querySelector(`.btn--guess`);
 const input = document.querySelector(`.input--guess`);
 const addingDiv = document.getElementById(`result--main`);
+const modal = document.querySelector(`.modal`);
+const overlay = document.querySelector(`.overlay`);
+const btnCloseModal = document.querySelector(`.close-modal`);
+const btnOpenModal = document.querySelector(`.btn--rules`);
+
+const openModal = function () {
+  modal.classList.remove(`hidden`);
+  overlay.classList.remove(`hidden`);
+};
+const closeModal = function () {
+  modal.classList.add(`hidden`);
+  overlay.classList.add(`hidden`);
+};
+
+const modalWindow = function () {
+  btnOpenModal.addEventListener("click", openModal);
+  btnCloseModal.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.classList.contains(`hidden`)) {
+      closeModal();
+    }
+  });
+};
+
+modalWindow();
 
 const message = function (text) {
   document.querySelector(`.h--guess`).textContent = text;
@@ -90,5 +118,7 @@ btnGuess.addEventListener(`click`, function () {
   addNew(`${inputRawValue}  —  ${bull} 🐂 ${cow} 🐄`);
   console.log(`${bull} 🐂 ${cow} 🐄`);
 });
+
+// const mainChecking = function ()
 
 // БАГ: Никогда не бывает 0-я
