@@ -1,12 +1,14 @@
 `use strict`;
 
-const btnGuess = document.querySelector(`.btn--guess`);
 const input = document.querySelector(`.input--guess`);
 const addingDiv = document.getElementById(`result--main`);
 const modal = document.querySelector(`.modal`);
 const overlay = document.querySelector(`.overlay`);
+const resultActualEl = document.querySelector(`.result--actual`);
+const btnGuess = document.querySelector(`.btn--guess`);
 const btnCloseModal = document.querySelector(`.close-modal`);
 const btnOpenModal = document.querySelector(`.btn--rules`);
+const btnNew = document.querySelector(`.btn--newGame`);
 
 const openModal = function () {
   modal.classList.remove(`hidden`);
@@ -28,7 +30,21 @@ const modalWindow = function () {
   });
 };
 
-modalWindow();
+const newGame = function () {
+  secretNumber = [];
+  generateArray(secretNumber);
+  message(`Начнем?`);
+  resultActualEl.textContent = ``;
+  input.value = ``;
+  console.log(secretNumber);
+
+  while (hasDuplicates(secretNumber)) {
+    //проверяет загаданный массив на наличие дубликатов, если есть - генерирует его заново
+    secretNumber = [];
+    generateArray(secretNumber);
+  }
+  console.log(secretNumber);
+};
 
 const message = function (text) {
   document.querySelector(`.h--guess`).textContent = text;
@@ -61,19 +77,14 @@ const generateArray = function (array) {
   }
 };
 
-let secretNumber = [];
+let secretNumber;
 
-generateArray(secretNumber);
-console.log(secretNumber);
-console.log(typeof secretNumber);
+newGame();
+modalWindow();
 
-while (hasDuplicates(secretNumber)) {
-  //проверяет загаданный массив на наличие дубликатов, если есть - генерирует его заново
-  secretNumber = [];
-  generateArray(secretNumber);
-}
-
-console.log(secretNumber);
+btnNew.addEventListener(`click`, function () {
+  newGame();
+});
 
 btnGuess.addEventListener(`click`, function () {
   const inputRawValue = input.value;
@@ -118,7 +129,5 @@ btnGuess.addEventListener(`click`, function () {
   addNew(`${inputRawValue}  —  ${bull} 🐂 ${cow} 🐄`);
   console.log(`${bull} 🐂 ${cow} 🐄`);
 });
-
-// const mainChecking = function ()
 
 // БАГ: Никогда не бывает 0-я
