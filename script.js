@@ -5,6 +5,8 @@ const addingDiv = document.getElementById(`result--main`);
 const modal = document.querySelector(`.modal`);
 const overlay = document.querySelector(`.overlay`);
 const resultActualEl = document.querySelector(`.result--actual`);
+const attemptValue = document.querySelector(`.attempt--guessValue`);
+const highScoreValue = document.querySelector(`.highscore--guessValue`);
 const btnGuess = document.querySelector(`.btn--guess`);
 const btnCloseModal = document.querySelector(`.close-modal`);
 const btnOpenModal = document.querySelector(`.btn--rules`);
@@ -36,11 +38,13 @@ const modalWindow = function () {
 
 const newGame = function () {
   secretNumber = [];
+  attempt = 0;
   generateArray(secretNumber);
   message(`Начнем?`);
   resultActualEl.textContent = ``;
   input.value = ``;
   console.log(secretNumber);
+  attemptValue.textContent = attempt;
 
   while (hasDuplicates(secretNumber)) {
     //проверяет загаданный массив на наличие дубликатов, если есть - генерирует его заново
@@ -78,6 +82,8 @@ const generateArray = function (array) {
 };
 
 let secretNumber;
+let attempt;
+let highScore = 0;
 
 newGame();
 modalWindow();
@@ -109,10 +115,17 @@ btnGuess.addEventListener(`click`, function () {
     //Проверяем, является ли введеное число победным
     //TODO: Доделать условия победы
     addNew(`✨ ${inputRawValue} — загаданное число! ✨`);
+    if (attempt < highScore || highScore === 0) {
+      highScore = attempt;
+      highScoreValue.textContent = highScore;
+    }
     return message(`✨ ПОБЕДА ✨`);
   }
 
   message(`🤔🤔🤔`);
+
+  attempt++;
+  attemptValue.textContent = attempt;
 
   let cow = 0;
   let bull = 0;

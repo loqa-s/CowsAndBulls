@@ -54,6 +54,18 @@ main {
   text-align: center;
 }
 
+.counter--guess {
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+  margin-bottom: 10px;
+  padding-inline: 11px;
+}
+
+.attempt--guess {
+  margin-right: 10px;
+}
+
 .btn {
   margin-top: 12px;
   border-radius: 5px;
@@ -103,4 +115,16 @@ main {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer--btn {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
 }
