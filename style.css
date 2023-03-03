@@ -128,3 +128,8 @@ main {
   flex-direction: column;
   max-width: 200px;
 }
+
+.disabled {
+  pointer-events: none;
+  background-color: #3333333a;
+}

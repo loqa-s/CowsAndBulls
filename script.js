@@ -45,6 +45,7 @@ const newGame = function () {
   input.value = ``;
   console.log(secretNumber);
   attemptValue.textContent = attempt;
+  btnGuess.classList.remove(`disabled`);
 
   while (hasDuplicates(secretNumber)) {
     //проверяет загаданный массив на наличие дубликатов, если есть - генерирует его заново
@@ -115,6 +116,7 @@ btnGuess.addEventListener(`click`, function () {
     //Проверяем, является ли введеное число победным
     //TODO: Доделать условия победы
     addNew(`✨ ${inputRawValue} — загаданное число! ✨`);
+    btnGuess.classList.add(`disabled`);
     if (attempt < highScore || highScore === 0) {
       highScore = attempt;
       highScoreValue.textContent = highScore;
