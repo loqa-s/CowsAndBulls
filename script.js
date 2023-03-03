@@ -108,11 +108,11 @@ btnGuess.addEventListener(`click`, function () {
   if (compareValues(secretNumber, inputValue)) {
     //Проверяем, является ли введеное число победным
     //TODO: Доделать условия победы
-    addNew(`${secretNumber} --- загаданное число!`);
-    return message(`ПОБЕДА`);
+    addNew(`✨ ${inputRawValue} — загаданное число! ✨`);
+    return message(`✨ ПОБЕДА ✨`);
   }
 
-  message(`...`);
+  message(`🤔🤔🤔`);
 
   let cow = 0;
   let bull = 0;
