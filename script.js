@@ -10,6 +10,10 @@ const btnCloseModal = document.querySelector(`.close-modal`);
 const btnOpenModal = document.querySelector(`.btn--rules`);
 const btnNew = document.querySelector(`.btn--newGame`);
 
+const message = function (text) {
+  document.querySelector(`.h--guess`).textContent = text;
+};
+
 const openModal = function () {
   modal.classList.remove(`hidden`);
   overlay.classList.remove(`hidden`);
@@ -44,10 +48,6 @@ const newGame = function () {
     generateArray(secretNumber);
   }
   console.log(secretNumber);
-};
-
-const message = function (text) {
-  document.querySelector(`.h--guess`).textContent = text;
 };
 
 const addNew = function (text) {
@@ -112,6 +112,8 @@ btnGuess.addEventListener(`click`, function () {
     return message(`ПОБЕДА`);
   }
 
+  message(`...`);
+
   let cow = 0;
   let bull = 0;
 
@@ -126,6 +128,7 @@ btnGuess.addEventListener(`click`, function () {
       }
     }
   }
+
   addNew(`${inputRawValue}  —  ${bull} 🐂 ${cow} 🐄`);
   console.log(`${bull} 🐂 ${cow} 🐄`);
 });
