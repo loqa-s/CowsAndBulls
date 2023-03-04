@@ -43,7 +43,6 @@ const newGame = function () {
   message(`Начнем?`);
   resultActualEl.textContent = ``;
   input.value = ``;
-  console.log(secretNumber);
   attemptValue.textContent = attempt;
   btnGuess.classList.remove(`disabled`);
 
@@ -52,7 +51,6 @@ const newGame = function () {
     secretNumber = [];
     generateArray(secretNumber);
   }
-  console.log(secretNumber);
 };
 
 const addNew = function (text) {
@@ -98,10 +96,6 @@ btnGuess.addEventListener(`click`, function () {
   const inputStringValue = inputRawValue.split("");
   const inputValue = inputStringValue.map(Number);
 
-  console.log(typeof inputRawValue);
-  console.log(inputValue);
-  console.log(secretNumber);
-
   if (inputValue.length !== 4) {
     //Проверяем, что введеное число состоит из 4х знаков
     return message(`Нужно ввести 4 цифры`);
@@ -145,7 +139,6 @@ btnGuess.addEventListener(`click`, function () {
   }
 
   addNew(`${inputRawValue}  —  ${bull} 🐂 ${cow} 🐄`);
-  console.log(`${bull} 🐂 ${cow} 🐄`);
 });
 
 // БАГ: Никогда не бывает 0-я
