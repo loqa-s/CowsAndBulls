@@ -137,3 +137,20 @@ main {
   pointer-events: none;
   background-color: #3333333a;
 }
+
+.rules {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.rules--1p {
+  margin-bottom: 10px;
+}
+
+.rules--2p {
+  margin-bottom: 10px;
+}
+
+.rules--3p {
+  margin-bottom: 10px;
+}
