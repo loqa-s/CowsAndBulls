@@ -54,6 +54,11 @@ main {
   text-align: center;
 }
 
+.input--guess::-webkit-inner-spin-button,
+.input--guess::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
 .counter--guess {
   display: flex;
   flex-direction: row;

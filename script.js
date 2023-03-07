@@ -168,5 +168,3 @@ document.addEventListener("keydown", function (e) {
     input.value = ``;
   }
 })
-
-// БАГ: Никогда не бывает 0-я
