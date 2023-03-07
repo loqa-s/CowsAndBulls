@@ -19,10 +19,12 @@ const message = function (text) {
 const openModal = function () {
   modal.classList.remove(`hidden`);
   overlay.classList.remove(`hidden`);
+  modalState = true;
 };
 const closeModal = function () {
   modal.classList.add(`hidden`);
   overlay.classList.add(`hidden`);
+  modalState = false;
 };
 
 const modalWindow = function () {
@@ -43,6 +45,7 @@ const newGame = function () {
   message(`Начнем?`);
   resultActualEl.textContent = ``;
   input.value = ``;
+  input.focus()
   attemptValue.textContent = attempt;
   btnGuess.classList.remove(`disabled`);
   winningState = false;
@@ -135,6 +138,7 @@ let secretNumber;
 let attempt;
 let highScore = 0;
 let winningState = false;
+let modalState = false;
 
 newGame();
 modalWindow();
@@ -147,18 +151,24 @@ btnNew.addEventListener(`click`, function () {
 
 btnGuess.addEventListener(`click`, function () {
   actualGame();
+  input.value = ``
+  input.focus()
 });
 
 document.addEventListener("keyup", function (e) {
   if (e.key === "Enter" && !winningState) {
     actualGame();
+    input.value = ``
+    input.focus()
   }
 });
 
 document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && modal.classList.contains(`hidden`)) {
+  if (e.key === "Escape" && !modalState) {
     input.value = ``;
   }
 })
+
+console.log(modal.classList.contains(`hidden`))
 
 // БАГ: Никогда не бывает 0-я
