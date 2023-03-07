@@ -79,7 +79,7 @@ const generateArray = function (array) {
   //функция генерируерт рандомные 4 числа и пушит их в массив
   let generateValue;
   for (i = 0; i < 4; i++) {
-    generateValue = Math.trunc(Math.random() * 9) + 1;
+    generateValue = Math.floor(Math.random() * 10);
     array.push(generateValue);
   }
 };
