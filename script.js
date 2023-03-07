@@ -169,6 +169,4 @@ document.addEventListener("keydown", function (e) {
   }
 })
 
-console.log(modal.classList.contains(`hidden`))
-
 // БАГ: Никогда не бывает 0-я
