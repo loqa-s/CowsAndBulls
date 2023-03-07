@@ -97,7 +97,6 @@ const actualGame = function () {
 
   if (compareValues(secretNumber, inputValue)) {
     //Проверяем, является ли введеное число победным
-    //TODO: Доделать условия победы
     addNew(`✨ ${inputRawValue} — загаданное число! ✨`);
     btnGuess.classList.add(`disabled`);
     if (attempt < highScore || highScore === 0) {
@@ -137,6 +136,8 @@ let highScore = 0;
 newGame();
 modalWindow();
 
+// console.log(secretNumber);
+
 btnNew.addEventListener(`click`, function () {
   newGame();
 });
@@ -145,7 +146,7 @@ btnGuess.addEventListener(`click`, function () {
   actualGame();
 });
 
-document.addEventListener("keydown", function (e) {
+document.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
     actualGame();
   }
