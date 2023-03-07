@@ -80,18 +80,7 @@ const generateArray = function (array) {
   }
 };
 
-let secretNumber;
-let attempt;
-let highScore = 0;
-
-newGame();
-modalWindow();
-
-btnNew.addEventListener(`click`, function () {
-  newGame();
-});
-
-btnGuess.addEventListener(`click`, function () {
+const actualGame = function () {
   const inputRawValue = input.value;
   const inputStringValue = inputRawValue.split("");
   const inputValue = inputStringValue.map(Number);
@@ -139,6 +128,27 @@ btnGuess.addEventListener(`click`, function () {
   }
 
   addNew(`${inputRawValue}  —  ${bull} 🐂 ${cow} 🐄`);
+};
+
+let secretNumber;
+let attempt;
+let highScore = 0;
+
+newGame();
+modalWindow();
+
+btnNew.addEventListener(`click`, function () {
+  newGame();
+});
+
+btnGuess.addEventListener(`click`, function () {
+  actualGame();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    actualGame();
+  }
 });
 
 // БАГ: Никогда не бывает 0-я
