@@ -45,6 +45,7 @@ const newGame = function () {
   input.value = ``;
   attemptValue.textContent = attempt;
   btnGuess.classList.remove(`disabled`);
+  winningState = false;
 
   while (hasDuplicates(secretNumber)) {
     //проверяет загаданный массив на наличие дубликатов, если есть - генерирует его заново
@@ -99,6 +100,7 @@ const actualGame = function () {
     //Проверяем, является ли введеное число победным
     addNew(`✨ ${inputRawValue} — загаданное число! ✨`);
     btnGuess.classList.add(`disabled`);
+    winningState = true;
     if (attempt < highScore || highScore === 0) {
       highScore = attempt;
       highScoreValue.textContent = highScore;
@@ -132,6 +134,7 @@ const actualGame = function () {
 let secretNumber;
 let attempt;
 let highScore = 0;
+let winningState = false;
 
 newGame();
 modalWindow();
@@ -147,9 +150,15 @@ btnGuess.addEventListener(`click`, function () {
 });
 
 document.addEventListener("keyup", function (e) {
-  if (e.key === "Enter") {
+  if (e.key === "Enter" && !winningState) {
     actualGame();
   }
 });
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && modal.classList.contains(`hidden`)) {
+    input.value = ``;
+  }
+})
 
 // БАГ: Никогда не бывает 0-я
